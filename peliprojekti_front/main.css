@@ -5,10 +5,10 @@ body {
     font-family: 'Lato', sans-serif;
     scroll-behavior: smooth;
 }
-
+/* FIX INSTRUCTIONS BUTTON */
 .navbar ul{
     list-style: none;
-    background: darkolivegreen;
+    background: #a98a56;
     padding: 0;
     margin: 0;
     text-align: center;
@@ -21,16 +21,27 @@ body {
 .navbar a {
     text-decoration: none;
     color: white;
-    width: 100px;
     display: block;
-    padding: 25px 20px;
-    text-align: center;
+    padding: 2rem 4rem;
 }
 
 .navbar a:hover{
-    background-color: darkseagreen;
+    background-color: #ceae78;
 }
 
 ul {
-    text-decoration: none;
+    list-style-type: none;
+    padding: 0;
+}
+
+section {
+    width: 100%;
+    display: grid;
+    justify-content: center;
+    padding: 0;
+}
+
+article {
+    padding: 5rem;
+    width: calc(100% / 2);
 }
