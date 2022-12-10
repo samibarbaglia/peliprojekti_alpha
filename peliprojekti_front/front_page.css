@@ -28,6 +28,12 @@ article:hover {
     color: #000001;
 }
 
+a:link, a:visited, a:hover {
+    background-color: transparent;
+    color: transparent;
+    text-decoration: none;
+}
+
 .wrapper {
   height: 10rem;
   /*This part is important for centering*/
