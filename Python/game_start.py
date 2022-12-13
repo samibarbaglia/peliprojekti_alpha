@@ -13,8 +13,8 @@ cursor = link.cursor(buffered=True)
 
 
 def randomcontingent(link):
-    sql = 'select name, ident from airport where type like "small%" or type like "large%" \
-    order by rand() limit 1'
+    sql = 'select name, ident from airport where type like small% or type like large% ' \
+          'order by rand() limit 1;'
     cursor.execute(sql)
     result = cursor.fetchall()
     for row in result:
