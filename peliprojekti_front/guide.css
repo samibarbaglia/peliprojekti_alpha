@@ -1,0 +1,50 @@
+body {
+    margin: 0;
+    padding: 0;
+    background-color: black;
+    font-family: 'Lato', sans-serif;
+    scroll-behavior: smooth;
+    color: #a6cf2a;
+    font-family: 'Silkscreen', cursive;
+}
+/* FIX INSTRUCTIONS BUTTON */
+.navbar ul{
+    list-style: none;
+    background: #3E432E;
+    padding: 0;
+    margin: 0;
+    text-align: center;
+
+}
+
+.navbar li {
+    display: inline-block;
+
+}
+
+.navbar a {
+    text-decoration: none;
+    color: #a6cf2a;
+    display: block;
+    padding: 2rem 4rem;
+}
+
+.navbar a:hover{
+    background-color: #ceae78;
+}
+
+ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+h1 {
+    text-align: center;
+}
+
+
+article {
+
+    padding: 5rem;
+    width: calc(100% / 2);
+}
