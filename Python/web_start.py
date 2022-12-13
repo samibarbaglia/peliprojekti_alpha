@@ -29,7 +29,7 @@ def index():
     return '''
     <form action="/game">
         <input name="name" />
-        <input type="submit" />
+        <input type="submit" value="Username"/>
     </form>
     '''
 
@@ -39,9 +39,9 @@ def game_start():
     nick = request.args.get('name')
     lottery = randomcontingent(link)
     data = {'username': nick, 'goal': lottery[0], 'icao': lottery[1]}
-    cursor.execute('insert into game (co2_consumed, co2_budget, location, screen_name) \
-    values (0, 10000, "EFHK", "' + nick +'")')
-    cursor.execute('update goal set destination = "' + lottery[1] + '"')
+    cursor.execute('insert into game (co2_consumed, co2_budget, location, screen_name) '
+                   'values (0, 10000, EFHK, ' + nick + ')')
+    cursor.execute('update goal set destination = ' + lottery[1] + '')
     return redirect('/game/plane')
 
 
