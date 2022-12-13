@@ -1,0 +1,57 @@
+/* GLOBAL STYLES */
+body {
+    background: #131313;
+    padding-top: 5em;
+    justify-content: center;
+    font-size: x-large;
+    text-align: center;
+    color: #a6cf2a;
+    font-family: 'Silkscreen', cursive;
+}
+
+section {
+    display: flex;
+    justify-content: center;
+}
+
+article {
+    font-size: medium;
+    padding: 4rem;
+    text-align: center;
+    color: #a5cd2b;
+    border: 1px solid #a5cd2b;
+    margin: 1rem;
+}
+
+article:hover {
+    background-color: #a6cf2a;
+    color: #000001;
+}
+
+.wrapper {
+  height: 10rem;
+  /*This part is important for centering*/
+  display: grid;
+  place-items: center;
+}
+
+.typing-demo {
+  width: 14.5ch;
+  animation: typing 2s steps(15), blink .5s step-end infinite alternate;
+  white-space: nowrap;
+  overflow: hidden;
+  font-family: 'Silkscreen', cursive;
+  font-size: 2em;
+}
+
+@keyframes typing {
+  from {
+    width: 0;
+  }
+}
+
+@keyframes blink {
+  50% {
+    border-color: transparent
+  }
+}
