@@ -1,17 +1,18 @@
 body {
-    margin: 0;
-    padding: 0;
-    background-color: floralwhite;
-    font-family: 'Lato', sans-serif;
+    margin: auto;
+    background-color: #131314;
+    color: #a6cf2a;
+    font-family: 'Silkscreen', Arial, sans-serif;
     scroll-behavior: smooth;
 }
-/* FIX INSTRUCTIONS BUTTON */
+
 .navbar ul{
     list-style: none;
-    background: #a98a56;
+    background: #131315;
     padding: 0;
     margin: 0;
     text-align: center;
+    width: calc(100% / 3);
 }
 
 .navbar li {
@@ -20,13 +21,14 @@ body {
 
 .navbar a {
     text-decoration: none;
-    color: white;
+    color: #a5cd2b;
     display: block;
-    padding: 2rem 4rem;
+    padding: 2rem 9rem;
 }
 
 .navbar a:hover{
-    background-color: #ceae78;
+    background-color: #a5cd2b;
+    color: #131315;
 }
 
 ul {
@@ -36,12 +38,66 @@ ul {
 
 section {
     width: 100%;
-    display: grid;
+    display: flex;
     justify-content: center;
     padding: 0;
 }
 
 article {
+    margin: 2rem 2rem 2rem 2rem;
+    width: 100%;
+    padding-right: 5px;
+    border: 1px solid #a6cf2a;
+    justify-content: center;
+    text-align: center;
+}
+
+article p {
+    text-align: center;
+}
+
+article img {
+    padding: 0;
+    margin: 3px 0 0 3px;
+    border: 1px #a6cf2a solid;
+    justify-content: center;
+    text-align: center;
+}
+
+.stats {
+    margin: 0 1rem 1rem 1rem;
+}
+
+.stats ul {
+    display: inline-flex;
+    width: 100%;
+    margin-top: 0;
+}
+
+.stats li {
+    margin: 1rem;
+    padding: 2rem;
+    border: 1px solid #a5cd2b;
+    justify-content: center;
+    width: calc(100% / 3);
+    text-align: center;
+}
+
+footer {
+    padding-bottom: 2rem;
+    text-align: center;
+    font-size: small;
+}
+
+#map {
+    height: 100%;
+    width: 100%;
     padding: 5rem;
-    width: calc(100% / 2);
+}
+
+#player-form {
+    background-color: transparent;
+    text-decoration: none;
+    form
+
 }
