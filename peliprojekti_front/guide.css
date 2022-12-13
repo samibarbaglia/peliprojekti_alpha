@@ -30,7 +30,8 @@ body {
 }
 
 .navbar a:hover{
-    background-color: #ceae78;
+    background-color: #a5cd2b;
+    color: #131315;
 }
 
 ul {
