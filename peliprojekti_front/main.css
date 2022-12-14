@@ -12,11 +12,8 @@ body {
     padding: 0;
     margin: 0;
     text-align: center;
-    width: calc(100% / 3);
-}
-
-.navbar li {
-    display: inline-block;
+    display: flex;
+    justify-content: center;
 }
 
 .navbar a {
@@ -43,25 +40,26 @@ section {
     padding: 0;
 }
 
-article {
-    margin: 2rem 2rem 2rem 2rem;
-    width: 100%;
-    padding-right: 5px;
-    border: 1px solid #a6cf2a;
-    justify-content: center;
-    text-align: center;
-}
-
-article p {
-    text-align: center;
-}
-
-article img {
+section p {
     padding: 0;
-    margin: 3px 0 0 3px;
-    border: 1px #a6cf2a solid;
+}
+
+article {
+    margin: 10px 2rem 10px 2rem;
+    width: 100%;
     justify-content: center;
     text-align: center;
+}
+
+aside {
+    text-align: center;
+    width: 30%;
+}
+
+#map {
+    height: 35rem;
+    width: 100%;
+    border: #a6cf2a solid 2px;
 }
 
 .stats {
@@ -87,4 +85,8 @@ footer {
     padding-bottom: 2rem;
     text-align: center;
     font-size: small;
+}
+
+marker {
+    color: #000001;
 }

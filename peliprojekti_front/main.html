@@ -3,14 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <title>LENTOPELI_ALPHA</title>
-    <style> @import url("https://fonts.googleapis.com/css2?family=Silkscreen&display=swap"); </style>
+    <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Silkscreen&display=swap" rel="stylesheet">
     <link href="main.css" rel="stylesheet">
     <script src="main.js" defer></script>
+     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css"
+     integrity="sha256-kLaT2GOSpHechhsozzB+flnD+zUyjE2LlfWPgU04xyI="
+     crossorigin=""/>
+     <script src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js"
+     integrity="sha256-WBkoXOwTeyKclOHuWtc+i2uENFpDZ9YPdf5Hf+D7ewM="
+     crossorigin=""></script>
 </head>
 <body>
 <div class="navbar">
         <ul>
-            <li><a href="#guide"> GUIDE </a></li>
+            <li><a href="guide.html"> GUIDE </a></li>
             <li><a href="front_page.html"> MENU </a></li>
             <li><a href="#about"> ABOUT </a></li>
         </ul>
@@ -19,12 +26,8 @@
 <main>
     <section>
         <article>
-            <p>[TUTKA]</p>
-        </article>
-        <article>
-        </article>
-        <article>
-            <p>[TUTKA]</p>
+            <p>click to drag map</p>
+             <div id="map"></div>
         </article>
     </section>
     <div class="stats">

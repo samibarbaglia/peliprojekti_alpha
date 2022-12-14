@@ -1,12 +1,11 @@
-//let name = prompt('Enter username: ');
+let map = L.map('map').setView([60.1902, 24.5748], 13);
 
-let map;
+L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    maxZoom: 4,
+    attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+}).addTo(map);
 
-function initMap() {
-  map = new google.maps.Map(document.getElementById("map"), {
-    center: { lat: -34.397, lng: 150.644 },
-    zoom: 8,
-  });
-}
+let marker = L.marker([60.1902, 24.5748]).addTo(map);
 
-window.initMap = initMap;
+var markerColor = L.marker({
+})
