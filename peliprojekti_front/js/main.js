@@ -36,4 +36,19 @@ async function gameSetup() {
   }
 }
 
+function myFunc(vars) {
+    return vars
+}
+
+async function flyTo(locations) {
+  locations = []
+    for(let airport of locations) {
+      const marker = L.marker([airport.latitude, airport.longitude]).addTo(map);
+      if(airport.active === true) {
+        marker.bindPopup(`Current location: <b>${airport.name}</b>`);
+        marker.openPopup();
+      }
+    }
+
+
 gameSetup();

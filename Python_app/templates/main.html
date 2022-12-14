@@ -1,12 +1,67 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns="http://www.w3.org/1999/html">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>LENTOPELI_ALPHA</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+    <!--FILE REFERENCES-->
+    <link href="../css/main.css" rel="stylesheet">
+    <script src="../js/main.js" defer></script>
+
+    <!-- FONTS -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Silkscreen&display=swap"
+          rel="stylesheet">
+
+    <!--LEAFLET MAP-->
+     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css"
+     integrity="sha256-kLaT2GOSpHechhsozzB+flnD+zUyjE2LlfWPgU04xyI="
+     crossorigin=""/>
+     <script src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js"
+     integrity="sha256-WBkoXOwTeyKclOHuWtc+i2uENFpDZ9YPdf5Hf+D7ewM="
+     crossorigin=""></script>
 </head>
 <body>
-{% extend base %}
+<header>
+<div class="navbar">
+        <ul>
+            <li><a href="guide.html"> GUIDE </a></li>
+            <li><a href="front_page.html"> MENU </a></li>
+            <li><a href="about.html"> ABOUT </a></li>
+        </ul>
+</div>
+</header>
 
+<main>
+    <section>
+        <article>
+            <h1>click to drag map</h1>
+             <div id="map"></div>
+        </article>
+    </section>
+    <div class="stats">
+            <ul>
+                <li>PILOT:</li>
+                <li id="airport-name">DESTINATION: </li>
+                <li>CO2: <span id="consumed">0</span> kg / <span id="budget">10 000</span> kg</li>
+            </ul>
+    </div>
+</main>
+<footer>
+    <div class="footer">
+        <h2>FLIGHT GAME 2: 2 FLIGHT 2 GAME </h2>
+    </div>
+</footer>
 
+<div class="flight-ended">
+    <h2>FLIGHT ENDED</h2>
+    <p>
+        <span id="end-txt">You have arrived!</span>
+    </p>
+</div>
 </body>
 </html>
