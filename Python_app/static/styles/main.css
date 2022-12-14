@@ -95,3 +95,43 @@ marker {
     color: #000001;
 }
 
+h1 {
+    text-align: center;
+    font-family: Silkscreen, "Bebas Neue", Arial, sans-serif;
+    margin-top: 2rem;
+}
+
+table {
+    padding: 2rem 2rem 0 2rem;
+    margin: 2rem 4rem 4rem 8rem;
+    width: 80%;
+    text-align: center;
+    background-color: transparent;
+    color: #a6cf2a;
+}
+
+th {
+    padding: 1rem;
+    border: #a6cf2a 2px solid;
+    font-family: inherit;
+    text-align: center;
+}
+
+td {
+    padding: 1rem;
+    border: #a6cf2a 2px solid;
+    font-family: Silkscreen, "Bebas Neue", Arial, sans-serif;
+}
+
+button {
+    background-color: #a6cf2a;
+    color: #000000;
+    border: #000000 solid 2px;
+    padding: 1rem;
+    border-radius: inherit;
+}
+
+main table {
+    justify-content: center;
+    text-align: center;
+}
