@@ -34,10 +34,9 @@ a:link, a:visited, a:hover {
 }
 
 .wrapper {
-  height: 10rem;
-  /*This part is important for centering*/
-  display: grid;
-  place-items: center;
+    height: 10rem;
+    display: grid;
+    place-items: center;
 }
 
 h1 {
@@ -71,11 +70,14 @@ form {
     box-sizing: border-box;
     display: inline-block;
     justify-content: center;
+
 }
 
 .username-input {
-    border: none;
     padding: 10px;
     margin: 10px 0;
-    box-shadow: #a6cf2a;
+    font-family: Silkscreen, "Bebas Neue", sans-serif;
+    background-color: transparent;
+    color: #a4cb2c;
+    border: #a6cf2a solid 1px;
 }
