@@ -13,7 +13,7 @@ const marker = L.marker([60.1902, 24.5748]).addTo(map);
 const username = localStorage.getItem('username');
 if (username) {
   const li = document.querySelector('div.stats li:first-child');
-  li.innerHTML = username;
+  li.innerHTML = "pilot: " + username;
 }
 
 
