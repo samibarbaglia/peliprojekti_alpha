@@ -1,5 +1,5 @@
 import json
-from flask import Flask, request, flash, Response, render_template, redirect, render_template_string
+from flask import Flask, request, Response, render_template, redirect, render_template_string, jsonify, url_for
 from flask_cors import CORS
 from game_start import randomcontingent
 import mysql.connector
@@ -105,18 +105,17 @@ def plane():
 def airports_json(options):
     data = []
     for icao in options:
-        req = 'select name, ident, iso_country from airport where ident = %s'
+        req = 'select name, latitude_deg, longitude_deg from airport where ident = %s'
         val = (icao,)
         cursor.execute(req, val)
 
         nextone = cursor.fetchone()
-        code = nextone[1]
+        location = [nextone[1], nextone[2]]
         name = nextone[0]
-        country = nextone[2]
-        item = {code: (name, country)}
+        item = {name: location}
         data.append(item)
-    jsonData = json.dumps(data)
-    return jsonData
+    json_data = json.dumps(data)
+    return json_data
 
 
 @app.route('/game/fly/<plane_pick>')
@@ -125,16 +124,16 @@ def fly(plane_pick):
     val = (plane_pick,)
     cursor.execute(sql, val)
     ports = airports.main()
+    message = plane_pick
     if plane_pick == 'large':
         limited = deque(ports, maxlen=20)
         data = airports_json(limited)
-        return Response(response=data)
+        return render_template('main.html', data=data, message=message)
 
-    if plane_pick == 'small':
+    elif plane_pick == 'small':
         limited = deque(ports, maxlen=10)
         data = airports_json(limited)
-        return Response(response=data)
-    return f'''<p>The plane you chose is: {str(plane_pick)}'''
+        return render_template('main.html', data=data, message=message)
 
 
 if __name__ == '__main__':
