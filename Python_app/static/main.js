@@ -36,15 +36,13 @@ async function gameSetup() {
       console.log(error);
   }
 }
-
-async function getData(){
-  fetch('/data')
-      .then((response) => response.json())
-  .then((data) => {
-    document.querySelector('#testing').innerHTML = data;
+async function getData() {
+  const plane = fetch('/get_plane')
+  const data = fetch('/game/fly/${plane}', {method: 'GET'})
+  .then(response => response.json())
+  .then(data => {
+    document.querySelector('#testing').innerHTML = data
   });
-
-}
 
 async function flyTo(){
     let data = await getData()
@@ -64,4 +62,4 @@ async function flyTo(){
 }
 
 gameSetup();
-flyTo();
+getData();
