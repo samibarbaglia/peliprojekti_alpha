@@ -12,7 +12,7 @@ link = mysql.connector.connect(
     port=3306,
     database='flight_game',
     user='root',
-    password='dB22',
+    password='p4r!i3',
     autocommit=True
     )
 
@@ -66,13 +66,20 @@ def plane():
     return render_template_string('''
     {% extends "base.html" %}
             {% block content %}
+            <table>
+            <tr>
             <h4>Large passenger airplane</h4><p>Kulutus: 62,000 co2-kg/km<br>Max lentomatka: 5556 km</p>
-    <form action="/bg/plane/large" method="post"><button type="submit" value="Choose Large">Choose Large</button></form>
-    <br><br>
-    <h4>Small airplane</h4><p>Kulutus: 0,583 co2-kg/km<br>Max lentomatka: 2778 km</p>
-    <form action="/bg/plane/small" method="post"><button type="submit" value="Choose Small">Choose Small</button>
-    </form>
+        <form action="/bg/plane/large" method="post"><button type="submit" value="Choose Large">Choose Large</button></form>
+        </tr>
+        <tr>
+        <h4>Small airplane</h4><p>Kulutus: 0,583 co2-kg/km<br>Max lentomatka: 2778 km</p>
+        <form action="/bg/plane/small" method="post"><button type="submit" value="Choose Small">Choose Small</button>
+        </form>
+        </tr>
+        </table>
+        
     {% endblock %}''')
+
 
 def airports_json(options):
     data = []
