@@ -53,6 +53,11 @@ article {
     text-align: center;
 }
 
+aside {
+    text-align: center;
+    width: 30%;
+}
+
 #map {
     height: 35rem;
     width: 100%;
