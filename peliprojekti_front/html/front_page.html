@@ -27,8 +27,20 @@
     </section>
 
     <form action="/game">
-        <input name="name" class="username-input" placeholder="Enter username"/>
+        <input name="name" id="name" class="username-input" placeholder="Enter username"/>
         <input type="submit" />
     </form>
 </main>
+<script>
+  const form = document.querySelector('form');
+  form.addEventListener('submit', (event) => {
+    event.preventDefault();
+    const input = document.querySelector('input[name="name"]');
+    const name = input.value;
+    localStorage.setItem('username', name);
+    form.reset();
+  });
+</script>
+
+
 </body>
