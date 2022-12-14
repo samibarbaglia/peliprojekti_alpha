@@ -1,4 +1,3 @@
-/* GLOBAL STYLES */
 body {
     background: #131313;
     padding-top: 5em;
@@ -6,7 +5,7 @@ body {
     font-size: x-large;
     text-align: center;
     color: #a6cf2a;
-    font-family: 'Silkscreen', cursive;
+    font-family: 'Silkscreen', 'Bebas Neue', Arial, sans-serif;
 }
 
 section {
@@ -41,6 +40,10 @@ a:link, a:visited, a:hover {
   place-items: center;
 }
 
+h1 {
+    font-size: inherit;
+}
+
 .typing-demo {
   width: 14.5ch;
   animation: typing 2s steps(15), blink .5s step-end infinite alternate;
@@ -60,4 +63,19 @@ a:link, a:visited, a:hover {
   50% {
     border-color: transparent
   }
+}
+
+form {
+    width: 1000px;
+    padding: 30px;
+    box-sizing: border-box;
+    display: inline-block;
+    justify-content: center;
+}
+
+.username-input {
+    border: none;
+    padding: 10px;
+    margin: 10px 0;
+    box-shadow: #a6cf2a;
 }
