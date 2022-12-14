@@ -13,5 +13,6 @@ const username = localStorage.getItem('username');
 if (username) {
   const li = document.querySelector('div.stats li:first-child');
   li.innerHTML = username;
+
 }
 
