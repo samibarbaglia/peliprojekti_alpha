@@ -35,6 +35,10 @@ ul {
     padding: 0;
 }
 
+h1 {
+    font-size: medium;
+}
+
 section {
     width: 100%;
     display: flex;
@@ -85,10 +89,13 @@ aside {
     text-align: center;
 }
 
+h2 {
+    font-size: small;
+}
+
 footer {
     padding-bottom: 2rem;
     text-align: center;
-    font-size: small;
 }
 
 marker {
