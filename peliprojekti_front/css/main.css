@@ -2,7 +2,7 @@ body {
     margin: auto;
     background-color: #131314;
     color: #a6cf2a;
-    font-family: 'Silkscreen', Arial, sans-serif;
+    font-family: 'Silkscreen','Bebas Neue', Arial, sans-serif;
     scroll-behavior: smooth;
 }
 
@@ -12,8 +12,10 @@ body {
     padding: 0;
     margin: 0;
     text-align: center;
-    display: flex;
-    justify-content: center;
+}
+
+.navbar li {
+    display: inline-block;
 }
 
 .navbar a {
@@ -60,6 +62,8 @@ aside {
     height: 35rem;
     width: 100%;
     border: #a6cf2a solid 2px;
+    opacity: 75%;
+    image-rendering: high-quality;
 }
 
 .stats {
