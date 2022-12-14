@@ -112,7 +112,5 @@ def airports_json(options):
     return json_data
 
 
-
-
 if __name__ == '__main__':
     app.run(use_reloader=True)
