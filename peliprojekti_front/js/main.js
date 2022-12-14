@@ -1,4 +1,5 @@
 'use strict'
+
 const map = L.map('map', {tap: false});
 
 L.tileLayer('https://{s}.google.com/vt/lyrs=s&x={x}&y={y}&z={z}', {
@@ -36,19 +37,24 @@ async function gameSetup() {
   }
 }
 
-function myFunc(vars) {
-    return vars
+async function getData(){
+  const data_url = {{url_for("/game/plane/<plane_pick>", id=fly(plane_pick.data)|tojson}}
+  fetch(data_url).then(response => response.json()).then(data => {}).then(await flyTo(data))
 }
 
-async function flyTo(locations) {
-  locations = []
-    for(let airport of locations) {
-      const marker = L.marker([airport.latitude, airport.longitude]).addTo(map);
+async function flyTo(locations){
+    try {
+      for(let airport in locations) {
+      const marker = L.marker([airport.location]).addTo(map);
       if(airport.active === true) {
         marker.bindPopup(`Current location: <b>${airport.name}</b>`);
         marker.openPopup();
       }
     }
 
+  } catch (error) {
+      console.log(error);
+  }
+}
 
 gameSetup();

@@ -83,9 +83,9 @@ def airports_json(options):
         cursor.execute(req, val)
 
         nextone = cursor.fetchone()
-        locations = [nextone[1], nextone[2]]
+        location = [nextone[1], nextone[2]]
         name = nextone[0]
-        item = {name: locations}
+        item = {name: location}
         data.append(item)
     json_data = json.dumps(data)
     return json_data
