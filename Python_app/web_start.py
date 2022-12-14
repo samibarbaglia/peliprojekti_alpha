@@ -1,5 +1,5 @@
 import json
-from flask import Flask, request, jsonify, Response, render_template, redirect
+from flask import Flask, request, flash, Response, render_template, redirect, render_template_string
 from flask_cors import CORS
 from game_start import randomcontingent
 import mysql.connector
@@ -21,12 +21,12 @@ cursor = link.cursor(buffered=True)
 app = Flask(__name__, template_folder='templates')
 cors = CORS(app)
 
-nick = ''
-
 
 @app.route('/')
 # creates the form to save the username
 def index():
+    if request.path == '/game':
+        return 'game'
     return render_template('front_page.html')
 
 
@@ -63,12 +63,16 @@ def plane_choice(plane):
 
 @app.route('/game/plane', methods=['GET'])
 def plane():
-    return '''<h4>Large passenger airplane</h4><p>Kulutus: 62,000 co2-kg/km<br>Max lentomatka: 5556 km</p>
+    return render_template_string('''
+    {% extends "base.html" %}
+            {% block content %}
+            <h4>Large passenger airplane</h4><p>Kulutus: 62,000 co2-kg/km<br>Max lentomatka: 5556 km</p>
     <form action="/bg/plane/large" method="post"><button type="submit" value="Choose Large">Choose Large</button></form>
     <br><br>
     <h4>Small airplane</h4><p>Kulutus: 0,583 co2-kg/km<br>Max lentomatka: 2778 km</p>
     <form action="/bg/plane/small" method="post"><button type="submit" value="Choose Small">Choose Small</button>
-    </form>'''
+    </form>
+    {% endblock %}''')
 
 def airports_json(options):
     data = []

@@ -1,0 +1,96 @@
+body {
+    margin: auto;
+    background-color: #131314;
+    color: #a6cf2a;
+    font-family: 'Silkscreen','Bebas Neue', Arial, sans-serif;
+    scroll-behavior: smooth;
+}
+
+.navbar ul{
+    list-style: none;
+    background: #131315;
+    padding: 0;
+    margin: 0;
+    text-align: center;
+}
+
+.navbar li {
+    display: inline-block;
+}
+
+.navbar a {
+    text-decoration: none;
+    color: #a5cd2b;
+    display: block;
+    padding: 2rem 9rem;
+}
+
+.navbar a:hover{
+    background-color: #a5cd2b;
+    color: #131315;
+}
+
+ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+section {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    padding: 0;
+}
+
+section p {
+    padding: 0;
+}
+
+article {
+    margin: 10px 2rem 10px 2rem;
+    width: 100%;
+    justify-content: center;
+    text-align: center;
+}
+
+aside {
+    text-align: center;
+    width: 30%;
+}
+
+#map {
+    height: 35rem;
+    width: 100%;
+    border: #a6cf2a solid 2px;
+    opacity: 75%;
+    image-rendering: high-quality;
+}
+
+.stats {
+    margin: 0 1rem 1rem 1rem;
+}
+
+.stats ul {
+    display: inline-flex;
+    width: 100%;
+    margin-top: 0;
+}
+
+.stats li {
+    margin: 1rem;
+    padding: 2rem;
+    border: 1px solid #a5cd2b;
+    justify-content: center;
+    width: calc(100% / 3);
+    text-align: center;
+}
+
+footer {
+    padding-bottom: 2rem;
+    text-align: center;
+    font-size: small;
+}
+
+marker {
+    color: #000001;
+}
