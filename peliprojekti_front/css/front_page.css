@@ -66,5 +66,16 @@ h1 {
 }
 
 form {
-    color: #a6cf2a;
+    width: 1000px;
+    padding: 30px;
+    box-sizing: border-box;
+    display: inline-block;
+    justify-content: center;
+}
+
+.username-input {
+    border: none;
+    padding: 10px;
+    margin: 10px 0;
+    box-shadow: #a6cf2a;
 }
