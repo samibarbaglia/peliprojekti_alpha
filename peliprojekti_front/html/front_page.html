@@ -27,10 +27,11 @@
     </section>
 
     <form action="/game">
-        <input name="name" id="name" class="username-input" placeholder="Enter username"/>
-        <input type="submit" />
+        <input name="name" class="username-input " placeholder="Enter username..." required/>
+        <input type="submit"/>
     </form>
 </main>
+
 <script>
   const form = document.querySelector('form');
   form.addEventListener('submit', (event) => {
@@ -42,5 +43,6 @@
   });
 </script>
 
-
 </body>
+
+</html>
