@@ -8,7 +8,14 @@ L.tileLayer('https://{s}.google.com/vt/lyrs=s&x={x}&y={y}&z={z}', {
 map.setView([60.1902, 24.5748], 5);
 
 const marker = L.marker([60.1902, 24.5748]).addTo(map);
-marker.bindPopup(`Current location: <b>${airport.name}</b>`)
+
+
+const username = localStorage.getItem('username');
+if (username) {
+  const li = document.querySelector('div.stats li:first-child');
+  li.innerHTML = username;
+}
+
 
 
 async function gameSetup() {
@@ -20,6 +27,7 @@ async function gameSetup() {
       const marker = L.marker([airport.latitude, airport.longitude]).addTo(map);
       if(airport.active === true) {
         marker.bindPopup(`Current location: <b>${airport.name}</b>`);
+        marker.openPopup();
       }
     }
 
