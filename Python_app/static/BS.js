@@ -29,7 +29,24 @@ async function getData(url){
 }
 
 // function to update game status
-
+function updateData(){
+      const url = 'http://127.0.0.1:5000/update'
+      fetch(url, {
+  method: 'POST',
+  body: JSON.stringify(data),
+  headers: {
+    'Content-Type': 'application/json'
+  }
+})
+.then(response => response.json())
+.then(data => {
+  console.log('Success:', data);
+})
+.catch(error => {
+  console.error('Error:', error);
+});
+      gameSetup();
+}
 
 
 // function to show weather at selected airport
@@ -71,7 +88,9 @@ async function gameSetup() {
         buttonMe.innerHTML = 'Fly here';
         clickContent.append(buttonMe);
         buttonMe.addEventListener('click', function(e){
-          const url =
+          //Updating the location
+          const newData = {`${name}`: coords}
+         updateData(newData);
         })
         marker.bindPopup(clickContent);
         marker.openPopup();

@@ -135,6 +135,13 @@ def choose_plane():
     {% endblock %}''')
 
 
+@app.route('/update', methods=['GET'])
+def update_data():
+    new_data = request.get_json()
+    for key in
+    name = new_data
+    print()
+
 @app.route('/get_location')
 def get_loc():
     cursor.execute('select location from game where id in (select max(id) from game)')
