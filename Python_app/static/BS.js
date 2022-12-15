@@ -13,12 +13,6 @@ L.tileLayer('https://{s}.google.com/vt/lyrs=s&x={x}&y={y}&z={z}', {
       li.innerHTML = "pilot: " + username;
   }
 
-// global variables
-
-// icons
-
-// form for player name
-
 // function to fetch data from API
 async function getData(url){
   const response = await fetch(url);
@@ -48,8 +42,6 @@ function updateData(){
       gameSetup();
 }
 
-
-// function to show weather at selected airport
 
 // function to check if any goals have been reached
 

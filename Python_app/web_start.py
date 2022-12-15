@@ -138,9 +138,11 @@ def choose_plane():
 @app.route('/update', methods=['GET'])
 def update_data():
     new_data = request.get_json()
-    for key in
-    name = new_data
-    print()
+    for key in new_data:
+        name = key
+        value = new_data[key]
+        print(name, value)
+
 
 @app.route('/get_location')
 def get_loc():
