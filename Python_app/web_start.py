@@ -124,6 +124,14 @@ def choose_plane():
     {% endblock %}''')
 
 
+@app.route('/get_location')
+def get_loc():
+    cursor.execute('select location from game where id in (select max(id) from game)')
+    get_icao = cursor.fetchone()
+    icao = get_icao[0]
+    cursor.execute('select name from airport where ident = %s')
+
+    return location
 
 def airports_json(options):
     data = []

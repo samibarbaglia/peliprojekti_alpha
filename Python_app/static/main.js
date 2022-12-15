@@ -99,17 +99,16 @@ async function flyTo() {
         }
       ]}
     intoGameData(data, gameData)
-
-    }
-      for(let airport of gameData.location) {
+    let current = await fetch('http://127.0.0.1:5000/get_location')
+    for(let airport of gameData.location) {
       const marker = L.marker([airport.latitude, airport.longitude]).addTo(map);
       if(airport.active === true) {
         marker.bindPopup(`Current location: <b>${airport.name}</b>`);
         marker.openPopup();
       }
     }
-
-  } catch (error) {
+  }
+  catch (error){
       console.log(error);
   }
 }
