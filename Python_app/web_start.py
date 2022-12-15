@@ -71,7 +71,7 @@ def fly(plane_pick):
     cursor.execute(sql, val)
     resp = data_through()
     plane = plane_pick
-    returning = {plane: resp}
+    returning = {'plane': plane, 'data': resp}
     jsonized = json.dumps(returning)
     return render_template('main.html', jsonized=jsonized)
 
