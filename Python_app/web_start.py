@@ -64,6 +64,20 @@ def data_through():
         return data
 
 
+@app.route('/get_coords')
+def get_coordinates():
+    icaos = data_through()
+    targets = {'Helsinki Vantaa Airport': [60.3172,24.963301],}
+    for code in icaos:
+        cursor.execute('select name, latitude, longitude from airports where ident="' + code + '"')
+        row = cursor.fetchone()
+        targets[row[0]] = [row[1], row[2]]
+    return targets
+
+
+
+
+
 @app.route('/game/fly/<plane_pick>', methods=['GET', 'POST'])
 def fly(plane_pick):
     sql = 'Update game set planetype = %s where id in (select max(id) from game);'
