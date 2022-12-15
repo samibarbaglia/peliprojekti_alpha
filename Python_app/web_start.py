@@ -10,9 +10,9 @@ from collections import deque
 link = mysql.connector.connect(
     host='127.0.0.1',
     port=3306,
-    database='flight_game',
+    database='lentopeli',
     user='root',
-    password='dB22',
+    password='p4r!i3',
     autocommit=True
     )
 
@@ -82,17 +82,45 @@ def get_plane():
     plane = res[0]
     return plane
 
+
 @app.route('/game/plane', methods=['GET'])
 def choose_plane():
     return render_template_string('''
     {% extends "base.html" %}
             {% block content %}
-            <h4>Large passenger airplane</h4><p>Kulutus: 62,000 co2-kg/km<br>Max lentomatka: 5556 km</p>
-    <form action="/game/fly/large" method="post"><button type="submit" value="Choose Large">Choose Large</button></form>
-    <br><br>
-    <h4>Small airplane</h4><p>Kulutus: 0,583 co2-kg/km<br>Max lentomatka: 2778 km</p>
-    <form action="/game/fly/small" method="post"><button type="submit" value="Choose Small">Choose Small</button>
-    </form>
+            
+            <h1>PLANE TYPES </h1>
+            <table>
+                <tr>
+                    <th scope="col">LARGE</th>
+                </tr>
+                <tr>
+                    <td>CO2: 62,000 co2-kg/km</td>
+                </tr>
+                <tr>
+                    <td>MAX FLIGHT DISTANCE: 5556 km</td>
+                </tr>
+                <tr>
+                    <td style=border:none><form action="/bg/plane/large" method="post"><button type="submit" value="Choose Large">CHOOSE LARGE</button></form></td>
+                    </td>
+                </tr>
+            </table>
+            <table>
+                <tr>
+                    <th scope="col">SMALL</th>
+                </tr>
+                <tr>
+                    <td>CO2: 0,583 co2-kg/km</td>
+                </tr>
+                <tr>
+                    <td>MaAX. FLIGHT DISTANCE: 2778 km</td>
+                </tr>
+                <tr>
+                    <td style=border:none><form action="/bg/plane/small" method="post"><button type="submit" value="Choose Small">CHOOSE SMALL</button>
+                    </form></td>
+                </tr>
+            </table>
+        
     {% endblock %}''')
 
 

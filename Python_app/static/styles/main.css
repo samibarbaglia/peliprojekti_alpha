@@ -99,16 +99,19 @@ h1 {
 table {
     padding: 1rem 2rem 2rem 2rem;
     margin: auto;
-    width: 80%;
+    width: 40%;
     text-align: center;
     justify-content: center;
     background-color: transparent;
     color: #a6cf2a;
+    font-family: Silkscreen, "Bebas Neue", Arial, sans-serif;
 }
 
 th {
     padding: 1rem;
     border: #a6cf2a 2px solid;
+    background-color: #a6cf2a;
+    color: black;
     font-family: inherit;
     text-align: center;
     justify-content: center;
