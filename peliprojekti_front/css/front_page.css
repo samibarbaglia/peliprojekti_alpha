@@ -43,7 +43,7 @@ h1 {
     font-size: inherit;
 }
 
-.typed-text {
+.typing-text {
   width: 14.5ch;
   animation: typing 2s steps(15), blink .5s step-end infinite alternate;
   white-space: nowrap;
