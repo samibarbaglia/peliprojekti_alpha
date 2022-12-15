@@ -1,5 +1,5 @@
 import json
-from flask import Flask, request, Response, render_template, redirect, render_template_string, jsonify, make_response
+from flask import Flask, request, Response, render_template, redirect, render_template_string, jsonify, make_response, url_for
 from flask_cors import CORS
 from game_start import randomcontingent
 import mysql.connector
@@ -18,7 +18,7 @@ link = mysql.connector.connect(
 
 cursor = link.cursor(buffered=True)
 
-app = Flask(__name__, template_folder='templates')
+app = Flask(__name__, template_folder='templates', static_folder='static')
 cors = CORS(app)
 
 
@@ -30,9 +30,9 @@ def index():
     return render_template('front_page.html')
 
 
-@app.route('/game', methods=['POST', 'GET'])
-# Save game data for this round
+@app.route('/game', methods=['GET', 'POST'])
 def game_start():
+    # Save game data for this round
     nick = request.args.get('name')
     lottery = randomcontingent(link)
     sql = 'insert into game (co2_consumed, co2_budget, location, screen_name) \
@@ -44,25 +44,23 @@ def game_start():
     val = (lottery[1],)
     cursor.execute(goal, val)
 
-    return redirect('/game/choose_plane')
+    return redirect('/game/plane')
 
 
 @app.route('/data')
 def data_through():
-    data = airports.main()
     cursor.execute('select planetype from game where id in (select max(id) from game);')
     plane_res = cursor.fetchone()
     plane = plane_res[0]
     if plane == 'large':
         limited = deque(data, maxlen=20)
         json_data = airports_json(limited)
-        data = json.dumps(json_data)
-        return jsonify(data)
+        return json_data
 
     elif plane == 'small':
         limited = deque(data, maxlen=10)
         data = airports_json(limited)
-        return jsonify(data)
+        return data
 
 
 @app.route('/game/fly/<plane_pick>', methods=['GET', 'POST'])
@@ -72,7 +70,8 @@ def fly(plane_pick):
     cursor.execute(sql, val)
     resp = data_through()
     plane = plane_pick
-    return make_response(jsonify(resp=resp, plane=plane))
+    returning = {plane: resp}
+    return render_template('main.html', returning=returning)
 
 
 @app.route('/get_plane')

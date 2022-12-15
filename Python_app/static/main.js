@@ -21,10 +21,9 @@ if (username) {
 
 async function gameSetup() {
   try {
-    const gameData = await getData('testdata/newgame.json');
-    console.log(gameData)
+      const gameData = await getData('testdata/newgame.json')
 
-    for(let airport of gameData.location) {
+      for(let airport of gameData.location) {
       const marker = L.marker([airport.latitude, airport.longitude]).addTo(map);
       if(airport.active === true) {
         marker.bindPopup(`Current location: <b>${airport.name}</b>`);
@@ -37,16 +36,22 @@ async function gameSetup() {
   }
 }
 async function getData() {
-  const plane = fetch('/get_plane')
-  const data = fetch('/game/fly/${plane}', {method: 'GET'})
-  .then(response => response.json())
-  .then(data => {
-    document.querySelector('#testing').innerHTML = data
-  });
+  const plane = await fetch('http://127.0.0.1:5000/get_plane');
+  const data = await plane.json();
+  console.log(data)
+  const dataReq = await fetch('/game/fly/' + plane, {method: 'GET'})
+    .then(response => response.json())
+    .then(data => {
+      document.querySelector('#testing').innerHTML = 'Plane: ${data{{key}}} <br> json: ${data{{value}}}'
+    });
+  return data
+}
 
 async function flyTo(){
     let data = await getData()
-    document.querySelector('#mapUn').innerHTML = data;
+    let locations = await fetch('http://127.0.0.1:5000/get_plane'
+    )
+    document.querySelector('#testing').innerText = JSON.stringify(data);
     try {
       for(let airport in locations) {
       const marker = L.marker([airport.location]).addTo(map);
@@ -62,4 +67,4 @@ async function flyTo(){
 }
 
 gameSetup();
-getData();
+flyTo();

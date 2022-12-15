@@ -8,8 +8,8 @@
 
 
     <!--FILE REFERENCES-->
-    <link href="../static/style/main.css" rel="stylesheet">
-    <script src="../static/main.js" defer></script>
+    <link href="{{ url_for('static', filename='styles/main.css') }}" type="text/css" rel="stylesheet">
+    <script src="{{ url_for('static', filename='main.js') }}" defer type="text/javascript"></script>
 
     <!-- FONTS -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -41,9 +41,11 @@
         <article>
             <h1>click to drag map</h1>
              <div id="map"></div>
-          <div><p id="testing"></p></div>
+
         </article>
-    </section>
+    </section><div><p id="testing">{% for key, value in returning.items() %}
+            <p>{{ key }}: {{ value }}</p>
+        {% endfor %}</p></div>
     <div class="stats">
             <ul>
                 <li>PILOT:</li>
