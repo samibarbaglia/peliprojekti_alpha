@@ -10,9 +10,9 @@ from collections import deque
 link = mysql.connector.connect(
     host='127.0.0.1',
     port=3306,
-    database='lentopeli',
+    database='flight_game',
     user='root',
-    password='p4r!i3',
+    password='dB22',
     autocommit=True
     )
 
@@ -49,6 +49,7 @@ def game_start():
 
 @app.route('/data')
 def data_through():
+    data = airports.main()
     cursor.execute('select planetype from game where id in (select max(id) from game);')
     plane_res = cursor.fetchone()
     plane = plane_res[0]
@@ -71,7 +72,8 @@ def fly(plane_pick):
     resp = data_through()
     plane = plane_pick
     returning = {plane: resp}
-    return render_template('main.html', returning=returning)
+    jsonized = json.dumps(returning)
+    return render_template('main.html', jsonized=jsonized)
 
 
 @app.route('/get_plane')
@@ -99,7 +101,7 @@ def choose_plane():
                     <td style=font-family:Rockwell;>MAX FLIGHT DISTANCE: 5556 KM</td>
                 </tr>
                 <tr>
-                    <td style=border:none><form action="/bg/plane/large" method="post"><button type="submit" value="Choose Large">CHOOSE LARGE</button></form></td>
+                    <td style=border:none><form action="/game/fly/large" method="post"><button type="submit" value="Choose Large">CHOOSE LARGE</button></form></td>
                     </td>
                 </tr>
             </table>
@@ -114,7 +116,7 @@ def choose_plane():
                     <td style=font-family:Rockwell;>MAX. FLIGHT DISTANCE: 2778 KM</td>
                 </tr>
                 <tr>
-                    <td style=border:none><form action="/bg/plane/small" method="post"><button type="submit" value="Choose Small">CHOOSE SMALL</button>
+                    <td style=border:none><form action="/game/fly/small" method="post"><button type="submit" value="Choose Small">CHOOSE SMALL</button>
                     </form></td>
                 </tr>
             </table>

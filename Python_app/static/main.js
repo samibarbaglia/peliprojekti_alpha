@@ -21,8 +21,22 @@ if (username) {
 
 async function gameSetup() {
   try {
-      const gameData = await getData('testdata/newgame.json')
-
+       const gameData = {
+      location: [
+        {
+          name: 'Helsinki Airport',
+          latitude: 60.1902,
+          longitude: 24.5748,
+          active: true
+        },
+        {
+          name: 'Vantaa Airport',
+          latitude: 60.2802,
+          longitude: 24.9348,
+          active: false
+        }
+      ]
+    }
       for(let airport of gameData.location) {
       const marker = L.marker([airport.latitude, airport.longitude]).addTo(map);
       if(airport.active === true) {
@@ -38,8 +52,7 @@ async function gameSetup() {
 async function getData() {
   const plane = await fetch('http://127.0.0.1:5000/get_plane');
   const data = await plane.json();
-  console.log(data)
-  const dataReq = await fetch('/game/fly/' + plane, {method: 'GET'})
+  const dataReq = await fetch('http://127.0.0.1:5000/game/fly/' + plane, {method: 'GET'})
     .then(response => response.json())
     .then(data => {
       document.querySelector('#testing').innerHTML = 'Plane: ${data{{key}}} <br> json: ${data{{value}}}'
@@ -47,24 +60,17 @@ async function getData() {
   return data
 }
 
-async function flyTo(){
-    let data = await getData()
-    let locations = await fetch('http://127.0.0.1:5000/get_plane'
-    )
-    document.querySelector('#testing').innerText = JSON.stringify(data);
-    try {
-      for(let airport in locations) {
-      const marker = L.marker([airport.location]).addTo(map);
-      if(airport.active === true) {
-        marker.bindPopup(`Current location: <b>${airport.name}</b>`);
-        marker.openPopup();
-      }
-    }
+async function flyTo() {
+  const data = await getData();
 
-  } catch (error) {
-      console.log(error);
+  for (const coordinate of data) {
+    const marker = L.marker([coordinate.latitude, coordinate.longitude]).addTo(map);
+    marker.bindPopup(`Current location: <b>${coordinate.name}</b>`);
+    marker.openPopup();
   }
 }
 
-gameSetup();
-flyTo();
+window.onload = function() {
+  // call flyTo() function after the page has loaded
+  flyTo();
+};
