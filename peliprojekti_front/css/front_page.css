@@ -33,7 +33,7 @@ a:link, a:visited, a:hover {
     text-decoration: none;
 }
 
-.wrapper {
+.typing {
     height: 10rem;
     display: grid;
     place-items: center;
@@ -43,7 +43,7 @@ h1 {
     font-size: inherit;
 }
 
-.typing-demo {
+.typed-text {
   width: 14.5ch;
   animation: typing 2s steps(15), blink .5s step-end infinite alternate;
   white-space: nowrap;
