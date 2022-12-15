@@ -16,52 +16,48 @@ if (username) {
   li.innerHTML = "pilot: " + username;
 }
 
+// Declare gameData outside of functions so it is available to both gameSetup() and flyTo()
+const gameData = {
+  location: [
+    {
+      name: 'Helsinki Airport',
+      latitude: 60.1902,
+      longitude: 24.5748,
+      active: true
+    },
+    {
+      name: 'Vantaa Airport',
+      latitude: 60.2802,
+      longitude: 24.9348,
+      active: false
+    }
+  ]
+};
 
-/*
 async function gameSetup() {
   try {
-       const gameData = {
-      location: [
-        {
-          name: 'Helsinki Airport',
-          latitude: 60.1902,
-          longitude: 24.5748,
-          active: true
-        },
-        {
-          name: 'Vantaa Airport',
-          latitude: 60.2802,
-          longitude: 24.9348,
-          active: false
-        }
-      ]
-    }
-      for(let airport of gameData.location) {
+    for (let airport of gameData.location) {
       const marker = L.marker([airport.latitude, airport.longitude]).addTo(map);
-      if(airport.active === true) {
+      if (airport.active === true) {
         marker.bindPopup(`Current location: <b>${airport.name}</b>`);
         marker.openPopup();
       }
     }
 
   } catch (error) {
-      console.log(error);
+    console.log(error);
   }
-}*/
+}
 
 async function getData() {
   // Fetches the necessary data from Flask
-  const plane = await fetch('http://127.0.0.1:5000/get_plane');
-  const data = await plane.json();
-  const dataReq = await fetch('http://127.0.0.1:5000/game/fly/' + plane, {method: 'GET'})
-    .then(response => response.json())
-    .then(data => {
-      document.querySelector('#testing').innerHTML = 'Plane: ${data{{key}}} <br> json: ${data{{value}}}';
-    });
-  return data;
+  const landings = await fetch('http://127.0.0.1:5000/get_coords')
+  const planeFetch = await fetch('http://127.0.0.1:5000/get_plane');
+  const plane = await planeFetch.json();
+  console.log(landings, plane, planeFetch)
 }
 
- function intoGameData(data, gameData) {
+function intoGameData(data, gameData) {
   gameData = {location: []};
   for (const item in data) {
     const name = item[0];
@@ -73,44 +69,17 @@ async function getData() {
       longitude: longitude,
       active: false
     }
-    gameData['location'].push(details)
-    }
-    return gameData;
+    gameData['location'].push(details);
+  }
+  return gameData;
 }
 
-async function flyTo() {
-  //Shows possible targets to fly to next and then sends the next location to server//
-  try {
-    const get = await getData();
-    const data = get['data']
-    const gameData = {
-      location: [
-        {
-          name: 'Helsinki Airport',
-          latitude: 60.1902,
-          longitude: 24.5748,
-          active: true
-        },
-        {
-          name: 'Vantaa Airport',
-          latitude: 60.2802,
-          longitude: 24.9348,
-          active: false
-        }
-      ]}
-    intoGameData(data, gameData)
-    let current = await fetch('http://127.0.0.1:5000/get_location')
-    for(let airport of gameData.location) {
-      const marker = L.marker([airport.latitude, airport.longitude]).addTo(map);
-      if(airport.active === true) {
-        marker.bindPopup(`Current location: <b>${airport.name}</b>`);
-        marker.openPopup();
-      }
-    }
-  }
-  catch (error){
-      console.log(error);
-  }
+
+function addMarkersForCoordinates(coordinates) {
+  coordinates.forEach(coordinate => {
+    const [latitude, longitude] = coordinate;
+    const marker = L.marker([latitude, longitude]).addTo(map);
+  });
 }
 
-flyTo();
+getData();

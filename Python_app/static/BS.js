@@ -7,8 +7,6 @@ L.tileLayer('https://{s}.google.com/vt/lyrs=s&x={x}&y={y}&z={z}', {
 }).addTo(map);
   map.setView([60.1902, 24.5748], 5);
 
-  const marker = L.marker([60.1902, 24.5748]).addTo(map);
-
   const username = localStorage.getItem('username');
     if (username) {
       const li = document.querySelector('div.stats li:first-child');
@@ -46,22 +44,43 @@ async function getData(url){
 // this is the main function that creates the game and calls the other functions
 async function gameSetup() {
   try {
+    //Fetch the map details
     const response = await getData('http://127.0.0.1:5000/data');
-     const data = await response;
-    const Arr = Array.from(data);
-    for(let location of Arr){
-        const name = Object.keys(location);
-        const coords = Object.values(location);
-        const lat = parseFloat(coords[0]);
-        const long = parseFloat(coords[1]);
+    const data = await response;
+    //Fetch player's location
+    const locRes = await getData('http://127.0.0.1:5000/get_location');
+    const currentlyArr = await locRes;
+    const currently = Object.keys(currentlyArr)[0]
 
-        const marker = L.marker(lat,long).addTo(map);
-        marker.bindPopup(`You are here: <b>${name}</b>`)
+    console.log(currently)
+    const Arr = Array.from(data);
+    for (let location of Arr) {
+      const name = Object.keys(location)[0];
+      const data = Object.values(location);
+      const coords = data[0];
+      // Create a new marker for the current location
+      const marker = L.marker(coords).addTo(map);
+      if (name === currently) {
+        //Here goes a way to tell current location apart from other markers
+      } else {
+        const clickContent = document.createElement('div');
+        const h4 = document.createElement('h4');
+        h4.innerHTML = name;
+        clickContent.append(h4);
+        const buttonMe = document.createElement('button');
+        buttonMe.innerHTML = 'Fly here';
+        clickContent.append(buttonMe);
+        buttonMe.addEventListener('click', function(e){
+          const url =
+        })
+        marker.bindPopup(clickContent);
+        marker.openPopup();
+      }}}
+  catch
+    (error)
+    {
+      console.log(error);
     }
   }
-  catch(error){
-    console.log(error);
-  }
-}
 gameSetup();
 // event listener to hide goal splash

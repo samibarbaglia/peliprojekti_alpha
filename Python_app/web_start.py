@@ -55,8 +55,8 @@ def data_through():
     plane = plane_res[0]
     if plane == 'large':
         limited = deque(data, maxlen=20)
-        json_data = airports_json(limited)
-        return json_data
+        data = airports_json(limited)
+        return data
 
     elif plane == 'small':
         limited = deque(data, maxlen=10)
@@ -73,9 +73,6 @@ def get_coordinates():
         row = cursor.fetchone()
         targets[row[0]] = [row[1], row[2]]
     return targets
-
-
-
 
 
 @app.route('/game/fly/<plane_pick>', methods=['GET', 'POST'])
@@ -143,14 +140,20 @@ def get_loc():
     cursor.execute('select location from game where id in (select max(id) from game)')
     get_icao = cursor.fetchone()
     icao = get_icao[0]
-    cursor.execute('select name from airport where ident = %s')
-
-    return location
+    val = (icao,)
+    cursor.execute('select name, latitude_deg, longitude_deg from airport where ident = %s', val)
+    icao_name = cursor.fetchone()
+    location_name = icao_name[0]
+    location_coords = [icao_name[1], icao_name[2]]
+    location = {location_name: location_coords}
+    location_json = json.dumps(location)
+    # Returns a json-string
+    return location_json
 
 def airports_json(options):
     data = []
     for icao in options:
-        req = 'select name, latitude_deg, longitude_deg from airport where ident = %s'
+        req = 'select name, latitude_deg, longitude_deg from airport where ident = %s order by rand();'
         val = (icao,)
         cursor.execute(req, val)
 
@@ -160,6 +163,7 @@ def airports_json(options):
         item = {name: location}
         data.append(item)
     json_data = json.dumps(data)
+    # Returns a json-string
     return json_data
 
 
