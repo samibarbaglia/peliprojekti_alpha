@@ -1,14 +1,22 @@
-// PALETTI
+// COLORS
 https://colorhunt.co/palette/0000003e432e616f39a7d129
 
 // TYPING EFFECT
 https://codepen.io/denic/pen/GRoOxbM
 
-// FONTTI 1
-https://www.dafont.com/open-24-display-st.font
-
-// FONTTI 2
-https://fonts.google.com/specimen/Karla?category=Serif,Sans+Serif
-
-// FONTTI 3 (DRAFT)
+// FONT 1
 https://fonts.google.com/specimen/Silkscreen
+
+// FONT 2
+https://fonts.google.com/specimen/Bebas+Neue?query=bebas
+
+// BACKUP FONTS
+Arial + Rockwell, default fonts
+
+// LEAFLET MAP
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css"
+integrity="sha256-kLaT2GOSpHechhsozzB+flnD+zUyjE2LlfWPgU04xyI="
+crossorigin=""/>
+<script src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js"
+integrity="sha256-WBkoXOwTeyKclOHuWtc+i2uENFpDZ9YPdf5Hf+D7ewM="
+crossorigin=""></script>

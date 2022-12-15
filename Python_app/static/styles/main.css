@@ -90,14 +90,8 @@ marker {
     color: #000001;
 }
 
-h1 {
-    text-align: center;
-    font-family: Silkscreen, "Bebas Neue", Arial, sans-serif;
-    margin-top: 3rem;
-}
-
 table {
-    padding: 1rem 2rem 2rem 2rem;
+    padding: 5rem 2rem 2rem 2rem;
     margin: auto;
     width: 40%;
     text-align: center;

@@ -89,16 +89,15 @@ def choose_plane():
     {% extends "base.html" %}
             {% block content %}
             
-            <h1>PLANE TYPES </h1>
-            <table>
+            <table style=font-family:Rockwell;>
                 <tr>
-                    <th scope="col">LARGE</th>
+                    <th scope="col" style=font-family:Rockwell;><b>LARGE COMMERCIAL PLANE</b></th>
                 </tr>
                 <tr>
-                    <td>CO2: 62,000 co2-kg/km</td>
+                    <td style=font-family:Rockwell;>CO2: 62,000 CO2-KG/KM</td>
                 </tr>
                 <tr>
-                    <td>MAX FLIGHT DISTANCE: 5556 km</td>
+                    <td style=font-family:Rockwell;>MAX FLIGHT DISTANCE: 5556 KM</td>
                 </tr>
                 <tr>
                     <td style=border:none><form action="/bg/plane/large" method="post"><button type="submit" value="Choose Large">CHOOSE LARGE</button></form></td>
@@ -107,13 +106,13 @@ def choose_plane():
             </table>
             <table>
                 <tr>
-                    <th scope="col">SMALL</th>
+                    <th scope="col" style=font-family:Rockwell;>SMALL PRIVATE PLANE</th>
                 </tr>
                 <tr>
-                    <td>CO2: 0,583 co2-kg/km</td>
+                    <td style=font-family:Rockwell;>CO2: 0,583 CO2-KG/KM</td>
                 </tr>
                 <tr>
-                    <td>MaAX. FLIGHT DISTANCE: 2778 km</td>
+                    <td style=font-family:Rockwell;>MAX. FLIGHT DISTANCE: 2778 KM</td>
                 </tr>
                 <tr>
                     <td style=border:none><form action="/bg/plane/small" method="post"><button type="submit" value="Choose Small">CHOOSE SMALL</button>
@@ -122,6 +121,7 @@ def choose_plane():
             </table>
         
     {% endblock %}''')
+
 
 
 def airports_json(options):
