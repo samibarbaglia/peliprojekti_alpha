@@ -17,6 +17,11 @@ if (username) {
   li.innerHTML = "pilot: " + username;
 }
 
+/* PLACEHOLDER DESTINATION BOX */
+const destination = "tää";
+const li = document.querySelector('div.stats li:nth-child(2)');
+li.innerHTML = "destination: " + destination;
+
 
 
 async function gameSetup() {
