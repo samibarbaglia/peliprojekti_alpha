@@ -1,0 +1,54 @@
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #131314;
+    scroll-behavior: smooth;
+    color: #a6cf2a;
+    font-family: Silkscreen, "Bebas Neue", Arial, sans-serif;
+}
+/* FIX INSTRUCTIONS BUTTON */
+.navbar ul{
+    list-style: none;
+    background: #131315;
+    padding: 0;
+    margin: 0;
+    text-align: center;
+
+}
+
+.navbar li {
+    display: inline-block;
+
+}
+
+.navbar a {
+    text-decoration: none;
+    color: #a6cf2a;
+    display: block;
+    padding: 2rem 9rem;
+}
+
+.navbar a:hover{
+    background-color: #a5cd2b;
+    color: #131315;
+}
+
+ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+h1 {
+    text-align: center;
+}
+
+
+article {
+    border: 1px solid #a5cd2b;
+    padding: 3rem;
+    width: calc(100% / 2);
+    margin: 4rem;
+    margin-left: 20%;
+    margin-right: 20%;
+    justify-content: center;
+}

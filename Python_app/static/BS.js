@@ -7,11 +7,19 @@ L.tileLayer('https://{s}.google.com/vt/lyrs=s&x={x}&y={y}&z={z}', {
 }).addTo(map);
   map.setView([60.1902, 24.5748], 5);
 
-  const username = localStorage.getItem('username');
-    if (username) {
-      const li = document.querySelector('div.stats li:first-child');
-      li.innerHTML = "pilot: " + username;
-  }
+
+const username = localStorage.getItem('username');
+if (username) {
+  const li = document.querySelector('div.stats li:first-child');
+  li.innerHTML = "pilot: " + username;
+}
+
+/* PLACEHOLDER DESTINATION BOX */
+const destination = "tää";
+const li = document.querySelector('div.stats li:nth-child(2)');
+li.innerHTML = "destination: " + destination;
+
+
 
 // function to fetch data from API
 async function getData(url){

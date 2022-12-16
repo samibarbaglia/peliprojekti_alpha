@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <title>LENTOPELI_ALPHA</title>
 
-    <link href="../css/front_page.css" rel="stylesheet">
+    <link href="../static/styles/front_page.css" rel="stylesheet">
 
 <!-- FONTS -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -39,9 +39,9 @@ IN THE SOFTWARE.
 
 <main>
     <section>
-        <a href="guide.html"><article>GUIDE</article></a>
-        <a href="main.html"><article>GAME</article></a>
-        <a href="about.html"><article>ABOUT</article></a>
+        <a href="/guide"><article>GUIDE</article></a>
+        <a href="/game"><article>GAME</article></a>
+        <a href="/about"><article>ABOUT</article></a>
     </section>
 
     <form action="/game">
@@ -53,7 +53,6 @@ IN THE SOFTWARE.
 <script>
   const form = document.querySelector('form');
   form.addEventListener('submit', (event) => {
-    event.preventDefault();
     const input = document.querySelector('input[name="name"]');
     const name = input.value;
     localStorage.setItem('username', name);

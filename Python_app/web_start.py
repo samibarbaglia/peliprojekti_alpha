@@ -29,6 +29,14 @@ def index():
         return 'game'
     return render_template('front_page.html')
 
+@app.route('/guide')
+def guide():
+    return render_template('guide.html')
+
+@app.route('/about')
+def about():
+    return render_template('about.html')
+
 
 @app.route('/game', methods=['GET', 'POST'])
 def game_start():
