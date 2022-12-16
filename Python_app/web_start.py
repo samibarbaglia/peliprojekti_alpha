@@ -138,10 +138,13 @@ def choose_plane():
 @app.route('/update', methods=['GET'])
 def update_data():
     new_data = request.get_json()
+    name = ''
     for key in new_data:
         name = key
-        value = new_data[key]
-        print(name, value)
+    cursor.execute('select ident from airport where name = "' + name + '"')
+    ident_res = cursor.fetchone()
+    icao = ident_res[0]
+    cursor.execute('update game set location="' + icao + '" where id in (select max(id) from game)')
 
 
 @app.route('/get_location')

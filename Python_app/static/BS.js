@@ -23,31 +23,26 @@ async function getData(url){
 }
 
 // function to update game status
-function updateData(){
-      const url = 'http://127.0.0.1:5000/update'
-      fetch(url, {
-  method: 'POST',
-  body: JSON.stringify(data),
-  headers: {
-    'Content-Type': 'application/json'
-  }
-})
-.then(response => response.json())
-.then(data => {
-  console.log('Success:', data);
-})
-.catch(error => {
-  console.error('Error:', error);
-});
-      gameSetup();
+function updateData(data){
+  const url = 'http://127.0.0.1:5000/update'
+  fetch(url, {
+    method: 'POST',
+    body: JSON.stringify(data),
+    headers: {
+      'Content-Type': 'application/json'
+    }
+  })
+  .then(response => response.json())
+  .then(data => {
+    console.log('Success:', data);
+  })
+  .catch(error => {
+    console.error('Error:', error);
+  });
+  gameSetup();
 }
 
-
 // function to check if any goals have been reached
-
-// function to update goal data and goal table in UI
-
-// function to check if game is over
 
 // function to set up game
 // this is the main function that creates the game and calls the other functions
@@ -61,7 +56,6 @@ async function gameSetup() {
     const currentlyArr = await locRes;
     const currently = Object.keys(currentlyArr)[0]
 
-    console.log(currently)
     const Arr = Array.from(data);
     for (let location of Arr) {
       const name = Object.keys(location)[0];
@@ -79,11 +73,13 @@ async function gameSetup() {
         const buttonMe = document.createElement('button');
         buttonMe.innerHTML = 'Fly here';
         clickContent.append(buttonMe);
-        buttonMe.addEventListener('click', function(e){
-          //Updating the location
-          const newData = {`${name}`: coords}
-         updateData(newData);
-        })
+
+       buttonMe.addEventListener('click', function(e){
+              //Updating the location
+            const newData = {[name]: coords};
+            console.log(newData);
+            updateData(newData);
+})
         marker.bindPopup(clickContent);
         marker.openPopup();
       }}}
